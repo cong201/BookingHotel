@@ -14,8 +14,8 @@ const connect = async () => {
     try {
         await mongoose.connect(process.env.MONGO);
         console.log("Connected to mongoose");
-    } catch (error) {
-        throw error
+    } catch (err) {
+        throw err
     }
 }
 
@@ -24,6 +24,9 @@ mongoose.connection.on("disconnected", () => {
 })
 
 //middleware
+
+app.use(express.json())
+
 app.use("/api/auth", authRoute)
 app.use("/api/user", userRoute)
 app.use("/api/hotels", hotelsRoute)
