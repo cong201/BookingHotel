@@ -4,21 +4,21 @@ const RoomSchema = new mongoose.Schema({
     title: {
         type: String,
         require: true,
-        unique: true
     },
-    email: {
-        type: String,
+    price: {
+        type: Number,
         require: true,
-        unique: true
     },
-    password: {
+    maxPeople: {
+        type: Number,
+        require: true
+    },
+    desc: {
         type: String,
         require: true
     },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
+    roomNumbers: [{ number: Number, unavailableDates: { type: [Date] } }],
 }, { timestamps: true })
+
 
 export default mongoose.model("Room", RoomSchema)
