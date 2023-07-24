@@ -5,6 +5,7 @@ import authRoute from './routes/auth.js'
 import userRoute from './routes/user.js'
 import hotelsRoute from './routes/hotels.js'
 import roomsRoute from './routes/rooms.js'
+import cookieParser from 'cookie-parser';
 
 
 const app = express();
@@ -27,9 +28,10 @@ mongoose.connection.on("disconnected", () => {
 
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use("/api/auth", authRoute)
-app.use("/api/user", userRoute)
+app.use("/api/users", userRoute)
 app.use("/api/hotels", hotelsRoute)
 app.use("/api/rooms", roomsRoute)
 
